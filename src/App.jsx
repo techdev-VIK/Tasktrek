@@ -34,32 +34,41 @@ function App() {
       <div className='my-5'>
         <h1>TaskTrek</h1>
 
-          <form onSubmit={todoFormHandler}>
-            <input type="text" onChange={(e) => setTask(e.target.value)}/>
+          <form onSubmit={(e) => todoFormHandler(e)}>
+            <input type="text" value={task} onChange={(e) => setTask(e.target.value)}/>
 
-            <select id="" onChange={(e) => setStatus(e.target.value)}>
+            <select id="" value={status} onChange={(e) => setStatus(e.target.value)} className='form-select'>
               <option value="Not Started">Not Started</option>
               <option value="In Progress">In Progress</option>
               <option value="Completed">Completed</option>
             </select>
 
-            <button type='submit'>Add Todo</button>
+            <button type='submit' className='btn btn-primary'>Add Todo</button>
           </form>
 
 
-          <div>
+          <div className='mt-3'>
             <h2>My Todos</h2>
 
-            <div className='row'>
-              <div className='col-md-4 col-sm-1 col-lg-4' >
+            <div className='row mt-3'>
+              
                 {['Not Started', 'In Progress', 'Completed'].map((t) => (
+                  <div className='col-md-4 col-sm-12 col-lg-4' key={t}>
+                    <h3>{t}</h3>
 
-                  <div>
-                    {t}
+                    <div className='row mt-3 mx-0'>
+                      {todos.filter((status) => status.status === t).map((todo) => (
+                        <div className='card' key={todo.id}>
+                            <div className='card-body'>
+                              <p><strong>Task: </strong><abbr title="Todo" style={{textDecoration: "none"}}>{todo.task}</abbr></p>
+                              <p><strong>Status: </strong>{todo.status}</p>
+                              <p><strong>Created: </strong>{new Date((todo.id)).toLocaleString()}</p>
+                            </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-
                 ))}
-              </div>
 
             </div>
           </div>
