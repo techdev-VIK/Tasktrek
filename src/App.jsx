@@ -29,6 +29,28 @@ function App() {
       setStatus('Not Started');
   }
 
+  const deleteTodo = (id) => {
+
+    const newTodos = todos.filter((todo) => todo.id !== id)
+
+
+    setTodos(newTodos)
+  }
+
+
+
+  const statusHandler = (id, e) => {
+    const {value} = e.target;
+
+    const changeStatus = todos.map((todo) => {
+      if(todo.id === id){
+        todo.status = value
+      }
+    })
+    
+    setTodos((prev) => [...prev, changeStatus])
+
+  }
   return (
     <>
       <div className='my-5'>
@@ -63,6 +85,15 @@ function App() {
                               <p><strong>Task: </strong><abbr title="Todo" style={{textDecoration: "none"}}>{todo.task}</abbr></p>
                               <p><strong>Status: </strong>{todo.status}</p>
                               <p><strong>Created: </strong>{new Date((todo.id)).toLocaleString()}</p>
+                            </div>
+                            <div>
+                            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+
+                            <select onChange={(e) => statusHandler(todo.id, e)} value={todo.status}>
+                              <option value="Not Started">Not Started</option>
+                              <option value="In Progress">In Progress</option>
+                              <option value="Completed">Completed</option>
+                            </select>
                             </div>
                         </div>
                       ))}
