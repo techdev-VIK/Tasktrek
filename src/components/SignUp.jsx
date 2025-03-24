@@ -29,7 +29,6 @@ const SignUp = () => {
         <hr />
         <div className="card-body">
           <form onSubmit={handleSubmit}>
-            {/* Username field */}
             <div className="mb-3">
               <label htmlFor="username" className="form-label">Username:</label>
               <input
