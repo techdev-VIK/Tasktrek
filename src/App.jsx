@@ -53,25 +53,27 @@ function App() {
   }
   return (
     <>
-      <div className='my-5'>
+      <div className='container my-5'>
         <h1>TaskTrek</h1>
 
-          <form onSubmit={(e) => todoFormHandler(e)}>
-            <input type="text" value={task} onChange={(e) => setTask(e.target.value)}/>
+          <form onSubmit={(e) => todoFormHandler(e)} className='d-flex justify-content-between p-2 flex-wrap'>
+            <input type="text" value={task} onChange={(e) => setTask(e.target.value)} className='form-control me-3'/>
 
-            <select id="" value={status} onChange={(e) => setStatus(e.target.value)} className='form-select'>
+            <select value={status} onChange={(e) => setStatus(e.target.value)} className=' form-select w-auto mt-3'>
               <option value="Not Started">Not Started</option>
               <option value="In Progress">In Progress</option>
               <option value="Completed">Completed</option>
             </select>
 
-            <button type='submit' className='btn btn-primary'>Add Todo</button>
+            <button type='submit' className='btn btn-primary mt-3'>Add Todo</button>
+
           </form>
 
+          <hr />
 
           <div className='mt-3'>
             <h2>My Todos</h2>
-
+            <hr />
             <div className='row mt-3'>
               
                 {['Not Started', 'In Progress', 'Completed'].map((t) => (
