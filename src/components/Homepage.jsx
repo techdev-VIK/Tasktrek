@@ -82,16 +82,16 @@ function Homepage() {
 
                     <div className='row mt-3 mx-0'>
                       {todos.filter((status) => status.status === t).map((todo) => (
-                        <div className='card' key={todo.id}>
+                        <div className='card mt-3' key={todo.id}>
                             <div className='card-body'>
                               <p><strong>Task: </strong><abbr title="Todo" style={{textDecoration: "none"}}>{todo.task}</abbr></p>
                               <p><strong>Status: </strong>{todo.status}</p>
                               <p><strong>Created: </strong>{new Date((todo.id)).toLocaleString()}</p>
                             </div>
-                            <div>
-                            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                            <div className='d-flex justify-content-between mb-3'>
+                            <button className='btn btn-sm btn-danger' onClick={() => deleteTodo(todo.id)}>Delete</button>
 
-                            <select onChange={(e) => statusHandler(todo.id, e)} value={todo.status}>
+                            <select className='form-select w-auto' onChange={(e) => statusHandler(todo.id, e)} value={todo.status}>
                               <option value="Not Started">Not Started</option>
                               <option value="In Progress">In Progress</option>
                               <option value="Completed">Completed</option>
