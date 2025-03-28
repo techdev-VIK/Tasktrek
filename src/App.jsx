@@ -6,6 +6,7 @@ import Homepage from './components/Homepage';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
+import GoogleAuthHandler from './components/GoogleAuthHandler';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<PrivateRoute><Homepage /></PrivateRoute>}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/signup" element={<SignUp />}/>
+          <Route path="/auth/google/callback" element={<GoogleAuthHandler />} />
         </Routes>
       </Router>
   )
