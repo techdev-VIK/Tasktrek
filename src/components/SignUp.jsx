@@ -50,7 +50,7 @@ const SignUp = () => {
       <h3 className="mt-3">TaskTrek</h3>
         <hr />
         <div className="card-body">
-            <form onSubmit={formHandler}>
+            <form onSubmit={(e) => formHandler(e)}>
               <div className="mb-3">
                 <label htmlFor="username" className="form-label">Username:</label>
                 <input type="text" id="username"
